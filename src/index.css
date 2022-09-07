@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #081114;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+}
+input, textarea{
+  color: black;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
