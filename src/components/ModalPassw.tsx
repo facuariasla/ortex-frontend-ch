@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { changePassword } from "../lib/routes";
 
-function ModalPassw({ userData }: any) {
+function ModalPassw() {
   const [selectedId, setSelectedId] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [validEmail, setValidEmail] = useState<boolean>(true);

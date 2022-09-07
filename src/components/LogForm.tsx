@@ -12,7 +12,7 @@ type Inputs = {
 
 export const LogForm:React.FC = () => {
   const [eyeOpen, setEyeOpen] = useState<boolean>(false);
-  const [userData, setUserData] = useState<any>();
+  const [userData, setUserData] = useState<object>();
 
   const {
     register,
@@ -78,7 +78,7 @@ export const LogForm:React.FC = () => {
         )}
       </div>
       {/* MODAL */}
-      <ModalPassw userData={userData}/>
+      <ModalPassw/>
       <button
         type="submit"
         className="h-12 bg-aquaortwo text-white rounded-xl font-semibold transition hover:bg-aquaorthree"
