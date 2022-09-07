@@ -1,25 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import { changePassword } from "../lib/routes";
 
-const ModalPassw:React.FC = () => {
+function ModalPassw({ userData }: any) {
   const [selectedId, setSelectedId] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [validEmail, setValidEmail] = useState<boolean>(true);
+  const [width, setWidth] = useState<number>(1024);
+  const [messageSended, setMessageSended] = useState<boolean>(false);
 
-  const handleEmail = () => {
+  const handleEmail = async () => {
     if (!email.includes("@")) {
       setValidEmail(false);
       return;
     }
     console.log(email);
     setValidEmail(true);
-    // Send value to the backend
-    // then clean the input
-    // Close the hover when i get the response, and put a toast with the response
+    // Send value to the backend:
+    // const sendEmail = await changePassword(email);
+    // if the response is valid:
+    setMessageSended(true);
+    // then clean the input:
     setEmail("");
-    setSelectedId("")
   };
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    setEmail('');
+    setMessageSended(false);
+    setValidEmail(true);
+  }, [selectedId]);
 
   return (
     <div>
@@ -58,7 +69,7 @@ const ModalPassw:React.FC = () => {
                     <div className="border-b">
                       <input
                         type="email"
-                        className="h-10 rounded-xl bg-oliveort text-white"
+                        className="h-10 rounded-xl bg-oliveort text-white w-full"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -70,13 +81,18 @@ const ModalPassw:React.FC = () => {
                         Please check twice if your email is correct
                       </p>
                     )}
+                    {messageSended && (
+                      <p className="text-xs text-green-200">
+                        Check your email inbox (spam inbox too)
+                      </p>
+                    )}
                   </div>
                   <button
                     onClick={() => handleEmail()}
                     type="button"
                     className="h-10 border border-white rounded-xl transition hover:bg-oliveortwo cursor-pointer"
                   >
-                    Submit
+                    {width > 500 ? "Click Here" : "Tap Here"}
                   </button>
                 </div>
                 <div className="flex flex-col justify-center">
@@ -97,6 +113,6 @@ const ModalPassw:React.FC = () => {
       </AnimatePresence>
     </div>
   );
-};
+}
 
 export default ModalPassw;

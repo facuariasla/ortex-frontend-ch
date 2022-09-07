@@ -7,46 +7,46 @@ function WSSTrading() {
 
   const subscription = { topic: "subscribe", to: "EURUSD:CUR" };
 
-  // useEffect(() => {
-  //   const ws = new WebSocket(
-  //     "wss://stream.tradingeconomics.com/?client=guest:guest"
-  //   );
+  useEffect(() => {
+    const ws = new WebSocket(
+      "wss://stream.tradingeconomics.com/?client=guest:guest"
+    );
 
-  //   ws.onopen = () => {
-  //     console.log("Connection Established!");
-  //     ws.send(JSON.stringify(subscription));
-  //   };
+    ws.onopen = () => {
+      console.log("Connection Established!");
+      ws.send(JSON.stringify(subscription));
+    };
 
-  //   ws.onmessage = (event) => {
-  //     const response = JSON.parse(event.data);
-  //     console.log(response);
-  //     if (response.price) {
-  //       setPrice(response.price);
-  //       let today = new Date(response.dt * 1);
-  //       const options = {
-  //         year: "numeric",
-  //         month: "long",
-  //         day: "numeric",
-  //         hour: "numeric",
-  //         minute: "numeric",
-  //         second: "numeric",
-  //       };
-  //       // let date = today.toLocaleDateString("en-EN", options as any);
-  //       let date = today.toLocaleString();
-  //       setDate(date);
-  //     }
-  //   };
+    ws.onmessage = (event) => {
+      const response = JSON.parse(event.data);
+      console.log(response);
+      if (response.price) {
+        setPrice(response.price);
+        let today = new Date(response.dt * 1);
+        const options = {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+        };
+        // let date = today.toLocaleDateString("en-EN", options as any);
+        let date = today.toLocaleString();
+        setDate(date);
+      }
+    };
 
-  //   ws.onerror = () => {
-  //     console.log("WS Error");
-  //   };
-  //   // cleanup method which will be called before next execution. in your case unmount.
+    ws.onerror = () => {
+      console.log("WS Error");
+    };
+    // cleanup method which will be called before next execution. in your case unmount.
 
-  //   if (!price) return;
-  //   return () => {
-  //     ws.close();
-  //   };
-  // }, []);
+    if (!price) return;
+    return () => {
+      ws.close();
+    };
+  }, []);
 
   return (
     <a

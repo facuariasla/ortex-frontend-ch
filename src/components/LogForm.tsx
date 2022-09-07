@@ -11,7 +11,9 @@ type Inputs = {
 };
 
 export const LogForm:React.FC = () => {
-  const [eyeOpen, setEyeOpen] = useState(false);
+  const [eyeOpen, setEyeOpen] = useState<boolean>(false);
+  const [userData, setUserData] = useState<any>();
+
   const {
     register,
     handleSubmit,
@@ -20,6 +22,7 @@ export const LogForm:React.FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setUserData(data);
     console.log(data);
     // Send data to the backend:
     // const response = await loginFn(data);
@@ -75,7 +78,7 @@ export const LogForm:React.FC = () => {
         )}
       </div>
       {/* MODAL */}
-      <ModalPassw />
+      <ModalPassw userData={userData}/>
       <button
         type="submit"
         className="h-12 bg-aquaortwo text-white rounded-xl font-semibold transition hover:bg-aquaorthree"
