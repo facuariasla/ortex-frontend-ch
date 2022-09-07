@@ -19,7 +19,6 @@ function WSSTrading() {
 
     ws.onmessage = (event) => {
       const response = JSON.parse(event.data);
-      console.log(response);
       if (response.price) {
         setPrice(response.price);
         let today = new Date(response.dt * 1);
