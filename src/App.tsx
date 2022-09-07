@@ -6,9 +6,9 @@ import WSSTrading from "./components/WSSTrading";
 function App() {
   return (
     <Layout>
-        <Header/>
-        <LogForm />
-        <WSSTrading/>
+      <Header />
+      <LogForm />
+      <WSSTrading />
     </Layout>
   );
 }

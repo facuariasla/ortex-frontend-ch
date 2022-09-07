@@ -6,7 +6,8 @@
 npm install
 npm run dev
 ```
-
+### In case that you cant download this repository:
+* Access Link Deploy: [OrtexFEChallenge](https://ortex-frontend-ch.vercel.app/)
 ### Description
 Frontend Challenge from [ORTEX](https://public.ortex.com/front-end-developer/)
 - React Hooks and TypeScript
